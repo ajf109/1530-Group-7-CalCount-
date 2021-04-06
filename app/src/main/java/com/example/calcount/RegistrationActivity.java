@@ -88,8 +88,10 @@ public class RegistrationActivity extends AppCompatActivity {
                     if (user == null) {
                         user = new User(username, password, email, height, weight, age, isMale);
                         userViewModel.insert(user);
+
                         Intent intent = new Intent(v.getContext(), HomepageActivity.class);
                         intent.putExtra("username", username);
+
                         startActivity(intent);
                     } else {
                         Toast.makeText(RegistrationActivity.this, "This username has been taken", Toast.LENGTH_LONG).show();

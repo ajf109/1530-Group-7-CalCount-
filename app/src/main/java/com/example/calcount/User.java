@@ -42,6 +42,14 @@ public class User {
         this.isMale = isMale;
     }
 
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
     public void setId(int id) {
         this.id = id;
     }

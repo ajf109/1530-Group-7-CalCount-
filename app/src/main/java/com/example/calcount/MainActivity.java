@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         EditText passText = findViewById(R.id.passText);
         EditText emailText = findViewById(R.id.emailText);
 
+
         //attempt to log the user in when they hit the "login" button
         loginButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {

@@ -21,6 +21,10 @@ public class UserViewModel extends AndroidViewModel {
         allUsers = repository.getAllUsers();
     }
 
+    public void insertExercise(Exercise exercise) { repository.insert(exercise); }
+
+    public void insertFood(Food food) { repository.insert(food); }
+
     public void insert(User user) {
         repository.insert(user);
     }

@@ -11,13 +11,21 @@ import java.util.List;
 //following said it was good practice to do this
 public class UserRepository {
     private UserDao userDao;
+    private FoodDao foodDao;
+    private ExerciseDao exerciseDao;
     private LiveData<List<User>> allUsers;
 
     public UserRepository(Application application) {
         UserDatabase database = UserDatabase.getInstance(application);
         userDao = database.userDao();
+        foodDao = database.foodDao();
+        exerciseDao = database.exerciseDao();
         allUsers = userDao.getAllUsers();
     }
+
+    public void insert(Exercise exercise){ new InsertExerciseAsyncTask(exerciseDao).execute(exercise); }
+
+    public void insert(Food food){ new InsertFoodAsyncTask(foodDao).execute(food); }
 
     public void insert(User user)
     {
@@ -52,6 +60,34 @@ public class UserRepository {
         @Override
         protected Void doInBackground(User... users) {
             userDao.insert(users[0]);
+            return null;
+        }
+    }
+
+    private static class InsertFoodAsyncTask extends AsyncTask<Food, Void, Void>{
+        private FoodDao foodDao;
+
+        private InsertFoodAsyncTask(FoodDao foodDao){
+            this.foodDao = foodDao;
+        }
+
+        @Override
+        protected Void doInBackground(Food... food) {
+            foodDao.insert(food[0]);
+            return null;
+        }
+    }
+
+    private static class InsertExerciseAsyncTask extends AsyncTask<Exercise, Void, Void>{
+        private ExerciseDao exerciseDao;
+
+        private InsertExerciseAsyncTask(ExerciseDao exerciseDao){
+            this.exerciseDao = exerciseDao;
+        }
+
+        @Override
+        protected Void doInBackground(Exercise... exercise) {
+            exerciseDao.insert(exercise[0]);
             return null;
         }
     }
