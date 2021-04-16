@@ -57,7 +57,7 @@ public class HomepageActivity extends AppCompatActivity {
         BMI = weightM / (heightM * heightM);
 
         TextView bmiText = findViewById(R.id.bmiText);
-        bmiText.setText("" + BMI + "");
+        bmiText.setText(String.valueOf(BMI).substring(0, 4));
 
         Toast.makeText(HomepageActivity.this, "Welcome, " + username,Toast.LENGTH_LONG).show();
         
