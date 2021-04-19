@@ -7,7 +7,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 //database, currently only contains users, will have to be expanded
-@Database(entities = {User.class, Food.class, Exercise.class}, version = 1)
+@Database(entities = {User.class, Food.class, Exercise.class}, version = 2)
 public abstract class UserDatabase extends RoomDatabase {
 
     private static UserDatabase instance;

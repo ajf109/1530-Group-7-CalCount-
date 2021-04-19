@@ -134,7 +134,7 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
             }
         });
 
-        Toast.makeText(HomepageActivity.this, "" + BMI + "",Toast.LENGTH_LONG).show();
+        //Toast.makeText(HomepageActivity.this, "" + BMI + "",Toast.LENGTH_LONG).show();
         
         Button logoutButton = findViewById(R.id.logoutButton);
 

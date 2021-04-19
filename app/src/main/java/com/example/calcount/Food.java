@@ -9,20 +9,26 @@ public class Food {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
-
     private String name;
 
     private int calories;
+    private int carbs;
+    private int proteins;
+    private int fats;
 
     private int userId;
 
     private boolean inDiary;
 
-    public Food(String name, int calories, int userId, boolean inDiary) {
+    public Food(String name, int calories, int carbs, int proteins, int fats,
+                int userId, boolean inDiary) {
         this.name = name;
         this.calories = calories;
         this.userId = userId;
         this.inDiary = inDiary;
+        this.carbs = carbs;
+        this.proteins = proteins;
+        this.fats = fats;
     }
 
     public boolean isInDiary() {
@@ -48,6 +54,12 @@ public class Food {
     public int getCalories() {
         return calories;
     }
+
+    public int getCarbs() { return carbs; }
+
+    public int getProteins() { return proteins; }
+
+    public int getFats() { return fats; }
 
     public void setId(int id) {
         this.id = id;
