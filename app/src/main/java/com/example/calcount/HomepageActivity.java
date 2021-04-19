@@ -25,7 +25,7 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
     //UserViewModel is a layer of abstraction used to interact with the Room Database
     private UserViewModel userViewModel;
     String username;
-    int id, cals;
+    int id, calories;
     double BMI, BMR;
     List<Exercise> exerciseDiary;
     List<Food> foodDiary;
@@ -86,19 +86,21 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
             BMR -= 161;
         }
 
-        cals = (int)(BMR * 1.375); // hardcoded activity multiplier (generally 1.2-1.95)
+        calories = (int)(BMR * 1.375); // hardcoded activity multiplier (generally 1.2-1.95)
 
         TextView bmiText = (TextView) findViewById(R.id.bmiText);
         bmiText.setText(String.valueOf(BMI).substring(0, 4));
 
         TextView calsRemaining = findViewById(R.id.calsText);
-        calsRemaining.setText(String.valueOf(cals));
+        calsRemaining.setText(String.valueOf(calories));
 
         userViewModel.getAllDiaryFoods(id).observe(this, new Observer<List<Food>>(){
             @Override
             public void onChanged(@Nullable List<Food> diaryFoodList) {
                 diaryAdapter.setFoods(diaryFoodList);
                 foodDiary = diaryFoodList;
+
+                int cals = calories;
 
                 for (int i = 0; i < diaryFoodList.size(); i++)
                 {
@@ -119,6 +121,8 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
             public void onChanged(@Nullable List<Exercise> diaryExList) {
                 diaryExAdapter.setExercises(diaryExList);
                 exerciseDiary = diaryExList;
+
+                int cals = calories;
 
                 for (int i = 0; i < diaryExList.size(); i++)
                 {
