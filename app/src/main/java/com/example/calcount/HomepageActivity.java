@@ -25,8 +25,8 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
     //UserViewModel is a layer of abstraction used to interact with the Room Database
     private UserViewModel userViewModel;
     String username;
-    int id;
-    double BMI;
+    int id, cals;
+    double BMI, BMR;
     List<Exercise> exerciseDiary;
     List<Food> foodDiary;
 
@@ -71,6 +71,7 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
         }
 
         User user = userViewModel.get(username);
+        double age = user.getAge();
         double height = user.getHeight();
         double weight = user.getWeight();
 
@@ -78,19 +79,26 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
         double weightM = weight / 2.205;
 
         BMI = weightM / (heightM * heightM);
+        BMR = (10 * (weightM)) + (6.25 * (heightM * 100)) - (5 * (age));
+        if (user.isMale()) {
+            BMR += 5;
+        } else {
+            BMR -= 161;
+        }
+
+        cals = (int)(BMR * 1.375); // hardcoded activity multiplier (generally 1.2-1.95)
 
         TextView bmiText = (TextView) findViewById(R.id.bmiText);
         bmiText.setText(String.valueOf(BMI).substring(0, 4));
 
         TextView calsRemaining = findViewById(R.id.calsText);
+        calsRemaining.setText(String.valueOf(cals));
 
         userViewModel.getAllDiaryFoods(id).observe(this, new Observer<List<Food>>(){
             @Override
             public void onChanged(@Nullable List<Food> diaryFoodList) {
                 diaryAdapter.setFoods(diaryFoodList);
                 foodDiary = diaryFoodList;
-
-                int cals = 2000;    //change to estimation later
 
                 for (int i = 0; i < diaryFoodList.size(); i++)
                 {
@@ -111,8 +119,6 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
             public void onChanged(@Nullable List<Exercise> diaryExList) {
                 diaryExAdapter.setExercises(diaryExList);
                 exerciseDiary = diaryExList;
-
-                int cals = 2000;    //change to estimation later
 
                 for (int i = 0; i < diaryExList.size(); i++)
                 {
