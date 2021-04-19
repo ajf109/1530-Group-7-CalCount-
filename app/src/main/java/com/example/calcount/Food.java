@@ -16,10 +16,21 @@ public class Food {
 
     private int userId;
 
-    public Food(String name, int calories, int userId) {
+    private boolean inDiary;
+
+    public Food(String name, int calories, int userId, boolean inDiary) {
         this.name = name;
         this.calories = calories;
         this.userId = userId;
+        this.inDiary = inDiary;
+    }
+
+    public boolean isInDiary() {
+        return inDiary;
+    }
+
+    public void setInDiary(boolean inDiary) {
+        this.inDiary = inDiary;
     }
 
     public int getUserId() {

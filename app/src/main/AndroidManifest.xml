@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CalCount">
-        <activity android:name=".EditDetailsActivity"></activity>
+        <activity android:name=".AddExerciseActivity"></activity>
+        <activity android:name=".AddFoodActivity" />
+        <activity android:name=".EditDetailsActivity" />
         <activity android:name=".ExerciseCreationActivity" />
         <activity android:name=".FoodCreationActivity" />
         <activity android:name=".RegistrationActivity" />

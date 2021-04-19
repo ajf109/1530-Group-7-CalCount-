@@ -20,7 +20,7 @@ public abstract class UserDatabase extends RoomDatabase {
         if (instance == null) {
             //change the "name" in order to create a new database if something went wrong in the one you were using
             instance = Room.databaseBuilder(context.getApplicationContext(),
-                    UserDatabase.class, "user_database8")
+                    UserDatabase.class, "user_database13")
                     .fallbackToDestructiveMigration()
                     .allowMainThreadQueries()
                     .build();

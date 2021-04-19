@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomepageActivity">
@@ -10,69 +9,170 @@
     <Button
         android:id="@+id/logoutButton"
         android:layout_width="221dp"
-        android:layout_height="53dp"
-        android:layout_marginBottom="280dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="17dp"
         android:text="Log Out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/foodCreateButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="76dp"
-        android:text="Create a food"
-        app:layout_constraintBottom_toTopOf="@+id/logoutButton"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/exCreateButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
-        android:text="Create an Exercise"
-        app:layout_constraintBottom_toTopOf="@+id/foodCreateButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/bmiText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="128dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editDetailsButton" />
 
     <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="102dp"
         android:text="Your BMI Is:"
-        app:layout_constraintBottom_toTopOf="@+id/bmiText"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/bmiText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoutButton"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+    <Button
+        android:id="@+id/foodCreateButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="29dp"
+        android:text="Create a food"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@+id/exCreateButton"
+        app:layout_constraintEnd_toStartOf="@+id/exCreateButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/exCreateButton" />
+
+    <Button
+        android:id="@+id/exCreateButton"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="50dp"
+        android:text="Create an Exercise"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toTopOf="@+id/addExerciseButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/foodCreateButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/bmiText"
+        android:layout_width="0dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="71dp"
+        android:layout_marginBottom="61dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/editDetailsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView17"
+        app:layout_constraintTop_toTopOf="@+id/textView21" />
 
     <Button
         android:id="@+id/editDetailsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
-        android:layout_marginBottom="103dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="17dp"
         android:text="Edit Details"
-        app:layout_constraintBottom_toTopOf="@+id/exCreateButton"
+        app:layout_constraintStart_toStartOf="@+id/logoutButton"
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+    <Button
+        android:id="@+id/addFoodButton"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="29dp"
+        android:text="Add Food to Diary"
+        android:textSize="8sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/addExerciseButton"
+        app:layout_constraintEnd_toStartOf="@+id/addExerciseButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/addExerciseButton"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="126dp"
+        android:layout_marginEnd="17dp"
+        android:text="Add Exercise to Diary"
+        android:textSize="8sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toEndOf="@+id/addFoodButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/foodDiaryRV"
+        android:layout_width="172dp"
+        android:layout_height="277dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="6dp"
+        app:layout_constraintBottom_toBottomOf="@+id/exerciseDiaryRV"
+        app:layout_constraintEnd_toStartOf="@+id/exerciseDiaryRV"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.559" />
+        app:layout_constraintTop_toTopOf="@+id/exerciseDiaryRV" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/exerciseDiaryRV"
+        android:layout_width="175dp"
+        android:layout_height="276dp"
+        android:layout_marginTop="145dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="144dp"
+        app:layout_constraintBottom_toTopOf="@+id/editDetailsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/foodDiaryRV"
+        app:layout_constraintTop_toBottomOf="@+id/exCreateButton" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="93dp"
+        android:layout_marginEnd="93dp"
+        android:layout_marginBottom="15dp"
+        android:text="Foods:"
+        app:layout_constraintBottom_toTopOf="@+id/foodDiaryRV"
+        app:layout_constraintEnd_toStartOf="@+id/exerciseDiaryRV"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="71dp"
+        android:layout_marginEnd="71dp"
+        android:layout_marginBottom="16dp"
+        android:text="Exercises:"
+        app:layout_constraintBottom_toTopOf="@+id/exerciseDiaryRV"
+        app:layout_constraintEnd_toEndOf="@+id/addExerciseButton"
+        app:layout_constraintStart_toStartOf="@+id/exerciseDiaryRV" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_marginEnd="79dp"
+        android:layout_marginBottom="207dp"
+        android:text="Calories Remaining:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/calsText"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/calsText"
+        android:layout_width="0dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="71dp"
+        android:layout_marginBottom="50dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/bmiText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView21"
+        app:layout_constraintTop_toBottomOf="@+id/exerciseDiaryRV" />
 </androidx.constraintlayout.widget.ConstraintLayout>

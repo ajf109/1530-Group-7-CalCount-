@@ -39,7 +39,7 @@ public class ExerciseCreationActivity extends AppCompatActivity {
                 //check if empty first
                 int calories = Integer.parseInt(caloriesStr);
 
-                Exercise exercise = new Exercise(name, calories, id);
+                Exercise exercise = new Exercise(name, calories, id, false);
                 userViewModel.insertExercise(exercise);
 
                 Intent intent = new Intent(v.getContext(), HomepageActivity.class);

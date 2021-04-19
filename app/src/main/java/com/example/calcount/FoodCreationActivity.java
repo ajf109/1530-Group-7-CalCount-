@@ -39,7 +39,7 @@ public class FoodCreationActivity extends AppCompatActivity {
                 //check if empty first
                 int calories = Integer.parseInt(caloriesStr);
 
-                Food food = new Food(name, calories, id);
+                Food food = new Food(name, calories, id, false);
                 userViewModel.insertFood(food);
 
                 Intent intent = new Intent(v.getContext(), HomepageActivity.class);

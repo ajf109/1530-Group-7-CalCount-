@@ -29,7 +29,8 @@ public class UserRepository {
 
     public void insert(User user)
     {
-        new InsertUserAsyncTask(userDao).execute(user);
+        //new InsertUserAsyncTask(userDao).execute(user);
+        userDao.insert(user);   //maybe just do it like this in userviewmodel
     }
 
     public void update(User user)
