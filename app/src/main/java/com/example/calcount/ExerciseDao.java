@@ -21,6 +21,9 @@ public interface ExerciseDao {
     @Delete
     void delete(Exercise exercise);
 
+    @Query("UPDATE exercise_table SET inDiary = 0")
+    void clearExercise();
+
     @Query("SELECT * FROM exercise_table WHERE userId = :user_id AND NOT inDiary ORDER BY id DESC")
     LiveData<List<Exercise>> getAllExercises(int user_id);
 

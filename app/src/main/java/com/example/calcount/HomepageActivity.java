@@ -199,6 +199,13 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
                 startActivity(intent);
             }
         });
+
+        Button clearAllButton = findViewById(R.id.clearAllButton);
+        clearAllButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                userViewModel.clearDiary();
+            }
+        });
     }
 
 

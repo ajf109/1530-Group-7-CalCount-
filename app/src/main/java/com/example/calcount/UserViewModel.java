@@ -62,9 +62,15 @@ public class UserViewModel extends AndroidViewModel {
     public User get(String username){ //return repository.get(username);
         return userDao.get(username); }
 
+    public void clearDiary()
+    {
+        foodDao.clearFood();
+        exerciseDao.clearExercise();
+    }
+
     public LiveData<List<User>> getAllUsers() {
         return allUsers;
-    }
+    }   //get rid
 
     public LiveData<List<Food>> getAllFoods(int user_id) {
         return foodDao.getAllFoods(user_id);

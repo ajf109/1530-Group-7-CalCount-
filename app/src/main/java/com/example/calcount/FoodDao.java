@@ -20,6 +20,9 @@ public interface FoodDao {
     @Delete
     void delete(Food food);
 
+    @Query("UPDATE food_table SET inDiary = 0")
+    void clearFood();
+
     @Query("SELECT * FROM food_table WHERE userId = :user_id AND NOT inDiary ORDER BY id DESC")
     LiveData<List<Food>> getAllFoods(int user_id);
 
