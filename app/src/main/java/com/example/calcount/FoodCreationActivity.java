@@ -66,12 +66,9 @@ public class FoodCreationActivity extends AppCompatActivity {
                 }
                 else
                     Toast.makeText(FoodCreationActivity.this,
-                            "Please enter all fields\nMacro-nutrients are are whole number " +
-                                    "percent values\n in the range 0-99", Toast.LENGTH_LONG).show();
-
-                //Food food = new Food(name, calories, id, false);
-                //userViewModel.insertFood(food);
-
+                            "Please enter all fields.\n\nMacro-nutrients should be entered" +
+                                    "as whole number values in grams.\nCheck the ingredients " +
+                                    "label or enter 0 if unsure.", Toast.LENGTH_LONG).show();
 
             }
         });

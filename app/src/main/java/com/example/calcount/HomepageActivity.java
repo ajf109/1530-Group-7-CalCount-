@@ -89,9 +89,20 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
         calories = (int)(BMR * 1.375); // hardcoded activity multiplier (generally 1.2-1.95)
 
         TextView bmiText = (TextView) findViewById(R.id.bmiText);
-        bmiText.setText(String.valueOf(BMI).substring(0, 4));
-
         TextView calsRemaining = findViewById(R.id.calsText);
+        TextView carbsText = findViewById(R.id.carbsTextView);
+        TextView proteinsText = findViewById(R.id.proteinsTextView);
+        TextView fatsText = findViewById(R.id.fatsTextView);
+
+
+        if (BMI < 18.5)
+            bmiText.setTextColor(android.graphics.Color.BLUE);
+        else if (BMI < 25)
+            bmiText.setTextColor(android.graphics.Color.GREEN);
+        else
+            bmiText.setTextColor(android.graphics.Color.RED);
+
+        bmiText.setText(String.valueOf(BMI).substring(0, 4));
         calsRemaining.setText(String.valueOf(calories));
 
         userViewModel.getAllDiaryFoods(id).observe(this, new Observer<List<Food>>(){
@@ -102,14 +113,52 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
 
                 int cals = calories;
 
+                // 0 = carbs, 1 = proteins, 2 = fats
+                int macros[] = new int[3];
+
                 for (int i = 0; i < diaryFoodList.size(); i++)
                 {
                     cals = cals - diaryFoodList.get(i).getCalories();
+                    macros[0] = macros[0] + diaryFoodList.get(i).getCarbs();
+                    macros[1] = macros[1] + diaryFoodList.get(i).getProteins();
+                    macros[2] = macros[2] + diaryFoodList.get(i).getFats();
                 }
                 if (exerciseDiary != null) {
                     for (int i = 0; i < exerciseDiary.size(); i++) {
                         cals = cals + exerciseDiary.get(i).getCalories();
                     }
+                }
+
+                // Macronutrient calculations below
+                carbsText.setText(macros[0] + "g");
+                proteinsText.setText(macros[1] + "g");
+                fatsText.setText(macros[2] + "g");
+
+                double recCarbsLow = calories * 0.45;
+                double recCarbsHigh = calories * 0.65;
+                int carbCals = macros[0] * 4; // 4 calories per gram of carb
+                if (carbCals > recCarbsLow && carbCals < recCarbsHigh) {
+                    carbsText.setTextColor(android.graphics.Color.GREEN);
+                } else {
+                    carbsText.setTextColor(android.graphics.Color.RED);
+                }
+
+                double recProteinsLow = calories * 0.12;
+                double recProteinsHigh = calories * 0.20;
+                int proteinCals = macros[1] * 4; // 4 calories per gram of protein
+                if (proteinCals > recProteinsLow && carbCals < recProteinsHigh) {
+                    proteinsText.setTextColor(android.graphics.Color.GREEN);
+                } else {
+                    proteinsText.setTextColor(android.graphics.Color.RED);
+                }
+
+                double recFatsLow = calories * 0.20;
+                double recFatsHigh = calories * 0.35;
+                int fatCals = macros[2] * 9; // 9 calories per gram of fat
+                if (fatCals > recFatsLow && fatCals < recFatsHigh) {
+                    fatsText.setTextColor(android.graphics.Color.GREEN);
+                } else {
+                    fatsText.setTextColor(android.graphics.Color.RED);
                 }
 
                 calsRemaining.setText("" + cals + "");
@@ -124,6 +173,9 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
 
                 int cals = calories;
 
+                // 0 = carbs, 1, proteins, 2 = fats
+                int macros[] = new int[3];
+
                 for (int i = 0; i < diaryExList.size(); i++)
                 {
                     cals = cals + diaryExList.get(i).getCalories();
@@ -137,8 +189,6 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
                 calsRemaining.setText("" + cals + "");
             }
         });
-
-        //Toast.makeText(HomepageActivity.this, "" + BMI + "",Toast.LENGTH_LONG).show();
         
         Button logoutButton = findViewById(R.id.logoutButton);
 
