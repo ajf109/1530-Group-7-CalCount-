@@ -33,7 +33,7 @@ public class DiaryFoodAdapter extends RecyclerView.Adapter<DiaryFoodAdapter.Diar
     public void onBindViewHolder(@NonNull DiaryViewHolder holder, int position) {
         Food f = diaryFoodList.get(position);
         holder.textFoodName.setText(f.getName());
-        holder.textFoodCals.setText("" + f.getCalories() + "");
+        holder.textFoodCals.setText("-" + f.getCalories() + "");
         holder.food = f;
     }
 

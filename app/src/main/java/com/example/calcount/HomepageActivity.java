@@ -103,6 +103,7 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
             bmiText.setTextColor(android.graphics.Color.RED);
 
         bmiText.setText(String.valueOf(BMI).substring(0, 4));
+        bmiText.setTextColor(android.graphics.Color.DKGRAY);
         calsRemaining.setText(String.valueOf(calories));
 
         userViewModel.getAllDiaryFoods(id).observe(this, new Observer<List<Food>>(){
@@ -116,8 +117,7 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
                 // 0 = carbs, 1 = proteins, 2 = fats
                 int macros[] = new int[3];
 
-                for (int i = 0; i < diaryFoodList.size(); i++)
-                {
+                for (int i = 0; i < diaryFoodList.size(); i++) {
                     cals = cals - diaryFoodList.get(i).getCalories();
                     macros[0] = macros[0] + diaryFoodList.get(i).getCarbs();
                     macros[1] = macros[1] + diaryFoodList.get(i).getProteins();
@@ -139,6 +139,8 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
                 int carbCals = macros[0] * 4; // 4 calories per gram of carb
                 if (carbCals > recCarbsLow && carbCals < recCarbsHigh) {
                     carbsText.setTextColor(android.graphics.Color.GREEN);
+                } else if (carbCals < recCarbsLow) {
+                    carbsText.setTextColor(android.graphics.Color.DKGRAY);
                 } else {
                     carbsText.setTextColor(android.graphics.Color.RED);
                 }
@@ -148,6 +150,8 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
                 int proteinCals = macros[1] * 4; // 4 calories per gram of protein
                 if (proteinCals > recProteinsLow && carbCals < recProteinsHigh) {
                     proteinsText.setTextColor(android.graphics.Color.GREEN);
+                } else if (proteinCals < recProteinsLow) {
+                    proteinsText.setTextColor(android.graphics.Color.DKGRAY);
                 } else {
                     proteinsText.setTextColor(android.graphics.Color.RED);
                 }
@@ -157,6 +161,8 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
                 int fatCals = macros[2] * 9; // 9 calories per gram of fat
                 if (fatCals > recFatsLow && fatCals < recFatsHigh) {
                     fatsText.setTextColor(android.graphics.Color.GREEN);
+                } else if (fatCals < recCarbsLow) {
+                    fatsText.setTextColor(android.graphics.Color.DKGRAY);
                 } else {
                     fatsText.setTextColor(android.graphics.Color.RED);
                 }

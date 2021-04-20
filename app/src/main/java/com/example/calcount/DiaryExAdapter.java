@@ -30,7 +30,7 @@ public class DiaryExAdapter extends RecyclerView.Adapter<DiaryExAdapter.DiaryExV
     public void onBindViewHolder(@NonNull DiaryExViewHolder holder, int position) {
         Exercise e = diaryExList.get(position);
         holder.textExName.setText(e.getName());
-        holder.textExCals.setText("" + e.getCalories() + "");
+        holder.textExCals.setText("+" + e.getCalories() + "");
         holder.exercise = e;
     }
 
