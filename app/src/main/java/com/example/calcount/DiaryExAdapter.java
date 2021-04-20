@@ -12,10 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+//used to populate the exercise diary recyclerview in HomepageActivity
 public class DiaryExAdapter extends RecyclerView.Adapter<DiaryExAdapter.DiaryExViewHolder>{
     private List<Exercise> diaryExList = new ArrayList<>();
     private ButtonListener buttonListener;
 
+    //takes a buttonListener as an argument, which will be the HomepageActivity itself
     public DiaryExAdapter (ButtonListener buttonListener) { this.buttonListener = buttonListener;}
 
     @NonNull
@@ -26,6 +28,7 @@ public class DiaryExAdapter extends RecyclerView.Adapter<DiaryExAdapter.DiaryExV
         return new DiaryExAdapter.DiaryExViewHolder(itemView, buttonListener);
     }
 
+    //displays the required text for each exercise diary entry
     @Override
     public void onBindViewHolder(@NonNull DiaryExViewHolder holder, int position) {
         Exercise e = diaryExList.get(position);
@@ -68,6 +71,7 @@ public class DiaryExAdapter extends RecyclerView.Adapter<DiaryExAdapter.DiaryExV
         }
     }
 
+    //ButtonListener interface will be implemented by HomepageActivity
     public interface ButtonListener{
         void onRemoveExClick(Exercise exercise);
     }

@@ -4,11 +4,6 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 //contains all data for a user
-//used by room to create database entries with corresponding fields
-//currently does not have any fields for foods/exercises
-
-//when we make the food/exercises, they will each need to have a "userId" variable with their
-//corresponding user's id (i think?)
 @Entity(tableName = "user_table")
 public class User {
 
@@ -22,8 +17,6 @@ public class User {
     private String email;
 
     //height is currently a double, so 5 ft 6 inches would be a value of "5.5"
-    //we could have two int height variables both for feet and inches instead,
-    //I wasn't sure what would make more sense
     private double height;
 
     private double weight;

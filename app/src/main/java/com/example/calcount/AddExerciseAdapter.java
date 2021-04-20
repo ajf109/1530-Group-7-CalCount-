@@ -12,10 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+//used to populate the recyclerview in AddExerciseActivity
 public class AddExerciseAdapter extends RecyclerView.Adapter<AddExerciseAdapter.ExerciseViewHolder>{
     private List<Exercise> exercises = new ArrayList<>();
     private ButtonListener buttonListener;
 
+    //takes a buttonListener as an argument, which will be the AddExerciseActivity itself
     public AddExerciseAdapter(ButtonListener buttonListener)
     {
         this.buttonListener = buttonListener;
@@ -29,6 +31,7 @@ public class AddExerciseAdapter extends RecyclerView.Adapter<AddExerciseAdapter.
         return new ExerciseViewHolder(itemView, buttonListener);
     }
 
+    //displays the required text for each exercise entry
     @Override
     public void onBindViewHolder(@NonNull ExerciseViewHolder holder, int position) {
         Exercise e = exercises.get(position);
@@ -71,6 +74,7 @@ public class AddExerciseAdapter extends RecyclerView.Adapter<AddExerciseAdapter.
         }
     }
 
+    //ButtonListener interface will be implemented by AddExerciseActivity
     public interface ButtonListener{
         void onAddExClick(Exercise exercise);
     }

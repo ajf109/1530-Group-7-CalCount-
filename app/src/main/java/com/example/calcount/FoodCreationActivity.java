@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+//allow the user to create a new food
 public class FoodCreationActivity extends AppCompatActivity {
 
     private UserViewModel userViewModel;
@@ -29,12 +30,14 @@ public class FoodCreationActivity extends AppCompatActivity {
         username = getIntent().getStringExtra("username");
         id = getIntent().getIntExtra("id", -1);
 
+        //get all required fields for the new data
         EditText foodNameText = findViewById(R.id.foodNameText);
         EditText caloriesText = findViewById(R.id.foodCalsText);
         EditText carbsText = findViewById(R.id.foodCarbsText);
         EditText proteinsText = findViewById(R.id.foodProteinsText);
         EditText fatsText = findViewById(R.id.foodFatsText);
 
+        //create a new food only if all fields contain data
         Button newFoodButton = findViewById(R.id.newFoodButton);
         newFoodButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){

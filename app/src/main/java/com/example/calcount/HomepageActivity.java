@@ -18,8 +18,9 @@ import android.widget.Toast;
 import java.util.List;
 
 //this is the page that appears after a user logs in
-//nothing really happens here yet, but its where we will
-//have food/exercise creation, and the user's diary
+//it contains their diary, macronutrient information, and button which lead to other activities
+
+//implements both DiaryFoodAdapter.ButtonListener and DiaryExAdapter.ButtonListender, allowing for button presses on either diary to be recognized
 public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdapter.ButtonListener, DiaryExAdapter.ButtonListener {
 
     //UserViewModel is a layer of abstraction used to interact with the Room Database
@@ -43,15 +44,16 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
 
+        //link appropriate adapters to their recycler views to display food/exercise entries in diary
         RecyclerView foodRV = findViewById(R.id.foodDiaryRV);
         foodRV.setLayoutManager(new LinearLayoutManager(this));
-        foodRV.setHasFixedSize(true); //get rid of this?
+        foodRV.setHasFixedSize(true);
         DiaryFoodAdapter diaryAdapter = new DiaryFoodAdapter(this);
         foodRV.setAdapter(diaryAdapter);
 
         RecyclerView exRV = findViewById(R.id.exerciseDiaryRV);
         exRV.setLayoutManager(new LinearLayoutManager(this));
-        exRV.setHasFixedSize(true); //get rid of this?
+        exRV.setHasFixedSize(true);
         DiaryExAdapter diaryExAdapter = new DiaryExAdapter(this);
         exRV.setAdapter(diaryExAdapter);
 
@@ -70,6 +72,7 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
             id = u.getId();
         }
 
+        //calculate BMI, recommended calories/macronutrients
         User user = userViewModel.get(username);
         double age = user.getAge();
         double height = user.getHeight();
@@ -94,7 +97,7 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
         TextView proteinsText = findViewById(R.id.proteinsTextView);
         TextView fatsText = findViewById(R.id.fatsTextView);
 
-
+        //change color of BMI depending on range
         if (BMI < 18.5)
             bmiText.setTextColor(android.graphics.Color.BLUE);
         else if (BMI < 25)
@@ -106,6 +109,7 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
         calsRemaining.setTextColor(android.graphics.Color.DKGRAY);
         calsRemaining.setText(String.valueOf(calories));
 
+        //update calorie/macronutrient totals each time a food is added to the diary
         userViewModel.getAllDiaryFoods(id).observe(this, new Observer<List<Food>>(){
             @Override
             public void onChanged(@Nullable List<Food> diaryFoodList) {
@@ -171,6 +175,7 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
             }
         });
 
+        //increase the number of allowed calories when an exercise item is added to the diary
         userViewModel.getAllDiaryExercises(id).observe(this, new Observer<List<Exercise>>(){
             @Override
             public void onChanged(@Nullable List<Exercise> diaryExList) {

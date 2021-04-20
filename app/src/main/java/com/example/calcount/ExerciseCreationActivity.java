@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+//allow users to create a new exercise
 public class ExerciseCreationActivity extends AppCompatActivity {
 
     private UserViewModel userViewModel;
@@ -34,8 +35,12 @@ public class ExerciseCreationActivity extends AppCompatActivity {
         Button newExerciseButton = findViewById(R.id.newExerciseButton);
         newExerciseButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+
+                //get name and calorie values for the new exercise
                 String name = exNameText.getText().toString();
                 String caloriesStr = caloriesText.getText().toString();
+
+                //create the new exercise only if all fields contain data
                 if (!(name.equals("") || caloriesStr.equals("")))
                 {
                     int calories = Integer.parseInt(caloriesStr);

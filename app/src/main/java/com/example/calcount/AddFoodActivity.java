@@ -15,6 +15,8 @@ import android.widget.Toast;
 import java.util.List;
 
 
+//implements AddFoodAdapter.ButtonListener so that it can
+//detect button clicks on the list items
 public class AddFoodActivity extends AppCompatActivity implements AddFoodAdapter.ButtonListener{
     private UserViewModel userViewModel;
     String username;
@@ -28,6 +30,7 @@ public class AddFoodActivity extends AppCompatActivity implements AddFoodAdapter
         username = getIntent().getStringExtra("username");
         id = getIntent().getIntExtra("id", -1);
 
+        //find the recycler view, and then attach the adapter to it
         RecyclerView rv = findViewById(R.id.addFoodsRV);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setHasFixedSize(true);//can get rid?
@@ -38,6 +41,7 @@ public class AddFoodActivity extends AppCompatActivity implements AddFoodAdapter
         AddFoodAdapter foodAdapter = new AddFoodAdapter(username, this);
         rv.setAdapter(foodAdapter);
 
+        //update list of foods in the adapter when something changes
         userViewModel.getAllFoods(id).observe(this, new Observer<List<Food>>() {
            @Override
            public void onChanged(@Nullable List<Food> foods) {
@@ -46,6 +50,7 @@ public class AddFoodActivity extends AppCompatActivity implements AddFoodAdapter
         });
     }
 
+    //when one of the buttons in the list is clicked, add the food to the diary and return to homepage
     @Override
     public void onAddFoodClick(Food food) {
         food.setInDiary(true);

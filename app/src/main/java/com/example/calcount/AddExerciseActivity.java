@@ -12,6 +12,8 @@ import android.os.Bundle;
 
 import java.util.List;
 
+//implements AddExerciseAdapter.ButtonListener so that it can
+//detect button clicks on the list items
 public class AddExerciseActivity extends AppCompatActivity implements AddExerciseAdapter.ButtonListener{
     private UserViewModel userViewModel;
     String username;
@@ -25,9 +27,10 @@ public class AddExerciseActivity extends AppCompatActivity implements AddExercis
         username = getIntent().getStringExtra("username");
         id = getIntent().getIntExtra("id", -1);
 
+        //find the recycler view, and then attach the adapter to it
         RecyclerView erv = findViewById(R.id.addExercisesRV);
         erv.setLayoutManager(new LinearLayoutManager(this));
-        erv.setHasFixedSize(true);//can get rid?
+        erv.setHasFixedSize(true);
 
         userViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory
                 .getInstance(this.getApplication())).get(UserViewModel.class);
@@ -35,6 +38,7 @@ public class AddExerciseActivity extends AppCompatActivity implements AddExercis
         AddExerciseAdapter exAdapter = new AddExerciseAdapter(this);
         erv.setAdapter(exAdapter);
 
+        //update list of exercises in the adapter when something changes
         userViewModel.getAllExercises(id).observe(this, new Observer<List<Exercise>>() {
             @Override
             public void onChanged(@Nullable List<Exercise> exercises) {
@@ -44,6 +48,7 @@ public class AddExerciseActivity extends AppCompatActivity implements AddExercis
 
     }
 
+    //when one of the buttons in the list is clicked, add the exercise to the diary and return to homepage
     @Override
     public void onAddExClick(Exercise exercise) {
         exercise.setInDiary(true);

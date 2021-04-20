@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+//allows user to change their height and weight, which will be reflected by BMI in the homepage
 public class EditDetailsActivity extends AppCompatActivity {
 
     String username;
@@ -28,6 +29,7 @@ public class EditDetailsActivity extends AppCompatActivity {
         username = getIntent().getStringExtra("username");
         id = getIntent().getIntExtra("id", -1);
 
+
         EditText newHeightText = findViewById(R.id.newHeightText);
         EditText newWeightText = findViewById(R.id.newWeightText);
 
@@ -36,9 +38,11 @@ public class EditDetailsActivity extends AppCompatActivity {
             public void onClick(View v){
                 User user = userViewModel.get(username);
 
+                //get the new height and weight values
                 String newHeightStr = newHeightText.getText().toString();
                 String newWeightStr = newWeightText.getText().toString();
 
+                //update values only if both fields contain data
                 if (!(newHeightStr.equals("") || newWeightStr.equals("")))
                 {
                     double newHeight = Double.parseDouble(newHeightStr);

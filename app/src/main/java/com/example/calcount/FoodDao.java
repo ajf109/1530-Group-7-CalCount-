@@ -17,9 +17,6 @@ public interface FoodDao {
     @Update
     void update(Food food);
 
-    @Delete
-    void delete(Food food);
-
     @Query("UPDATE food_table SET inDiary = 0")
     void clearFood();
 

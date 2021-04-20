@@ -18,9 +18,6 @@ public interface ExerciseDao {
     @Update
     void update(Exercise exercise);
 
-    @Delete
-    void delete(Exercise exercise);
-
     @Query("UPDATE exercise_table SET inDiary = 0")
     void clearExercise();
 

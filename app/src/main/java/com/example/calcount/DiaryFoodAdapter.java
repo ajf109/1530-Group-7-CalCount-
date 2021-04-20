@@ -12,10 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+//used to populate the food diary recyclerview in HomepageActivity
 public class DiaryFoodAdapter extends RecyclerView.Adapter<DiaryFoodAdapter.DiaryViewHolder>{
     private List<Food> diaryFoodList = new ArrayList<>();
     private ButtonListener buttonListener;
 
+    //takes a buttonListener as an argument, which will be the HomepageActivity itself
     public DiaryFoodAdapter(ButtonListener buttonListener)
     {
         this.buttonListener = buttonListener;
@@ -29,6 +31,8 @@ public class DiaryFoodAdapter extends RecyclerView.Adapter<DiaryFoodAdapter.Diar
         return new DiaryViewHolder(itemView, buttonListener);
     }
 
+
+    //displays the required text for each food diary entry
     @Override
     public void onBindViewHolder(@NonNull DiaryViewHolder holder, int position) {
         Food f = diaryFoodList.get(position);
@@ -72,6 +76,7 @@ public class DiaryFoodAdapter extends RecyclerView.Adapter<DiaryFoodAdapter.Diar
         }
     }
 
+    //ButtonListener interface will be implemented by HomepageActivity
     public interface ButtonListener{
         void onRemoveFoodClick(Food food);
     }

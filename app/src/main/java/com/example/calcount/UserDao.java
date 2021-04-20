@@ -18,13 +18,7 @@ public interface UserDao {
     @Update
     void update(User user);
 
-    @Delete
-    void delete(User user);
-
-    //something like this for login?
     @Query("SELECT * FROM user_table WHERE username = :username")
     User get(String username);
 
-    @Query("SELECT * FROM user_table ORDER BY id DESC")
-    LiveData<List<User>> getAllUsers();
 }

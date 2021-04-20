@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+//used to populate the recyclerview in AddFoodActivity
 public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.FoodViewHolder> {
     private List<Food> foods = new ArrayList<Food>();
     private UserViewModel userViewModel;
@@ -20,6 +21,7 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.FoodView
     private String username;
     private ButtonListener buttonListener;
 
+    //takes a buttonListener as an argument, which will be the AddFoodActivity itself
     public AddFoodAdapter(String str, ButtonListener buttonListener)
     {
         username = str;
@@ -34,6 +36,7 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.FoodView
         return new FoodViewHolder(itemView, buttonListener);
     }
 
+    //displays the required text for each food entry
     @Override
     public void onBindViewHolder(@NonNull FoodViewHolder holder, int position) {
         Food f = foods.get(position);
@@ -48,7 +51,7 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.FoodView
     }
 
     public void setFoods(List<Food> foods) {
-        this.foods = foods; //can do in onbind instead
+        this.foods = foods;
         notifyDataSetChanged();
     }
 
@@ -70,11 +73,6 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.FoodView
             addFoodEntryButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                   /* food.setInDiary(true);
-                    //userViewModel.update(food);
-                    Intent intent = new Intent(v.getContext(), HomepageActivity.class);
-                    intent.putExtra("username", username);
-                    v.getContext().startActivity(intent);*/
                     buttonListener.onAddFoodClick(food);
                 }
             });
@@ -83,6 +81,7 @@ public class AddFoodAdapter extends RecyclerView.Adapter<AddFoodAdapter.FoodView
 
     }
 
+    //ButtonListener interface will be implemented by AddFoodActivity
     public interface ButtonListener{
         void onAddFoodClick(Food food);
     }
