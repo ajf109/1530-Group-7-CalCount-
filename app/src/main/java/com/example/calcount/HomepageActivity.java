@@ -103,7 +103,7 @@ public class HomepageActivity extends AppCompatActivity implements DiaryFoodAdap
             bmiText.setTextColor(android.graphics.Color.RED);
 
         bmiText.setText(String.valueOf(BMI).substring(0, 4));
-        bmiText.setTextColor(android.graphics.Color.DKGRAY);
+        calsRemaining.setTextColor(android.graphics.Color.DKGRAY);
         calsRemaining.setText(String.valueOf(calories));
 
         userViewModel.getAllDiaryFoods(id).observe(this, new Observer<List<Food>>(){
