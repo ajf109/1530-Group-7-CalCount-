@@ -8,27 +8,29 @@
 
     <Button
         android:id="@+id/logoutButton"
-        android:layout_width="221dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginBottom="17dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#F41313"
         android:text="Log Out"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editDetailsButton" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.97" />
 
     <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="61dp"
-        android:layout_marginEnd="102dp"
-        android:layout_marginBottom="18dp"
         android:text="Your BMI Is:"
-        app:layout_constraintBottom_toTopOf="@+id/editDetailsButton"
-        app:layout_constraintEnd_toStartOf="@+id/bmiText"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.321"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.75" />
 
     <Button
         android:id="@+id/foodCreateButton"
@@ -59,28 +61,28 @@
 
     <TextView
         android:id="@+id/bmiText"
-        android:layout_width="0dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="71dp"
-        android:layout_marginBottom="14dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/editDetailsButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView17"
-        app:layout_constraintTop_toBottomOf="@+id/calsText" />
+        app:layout_constraintHorizontal_bias="0.725"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.76" />
 
     <Button
         android:id="@+id/editDetailsButton"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="34dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginBottom="83dp"
         android:text="Edit Details"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/clearAllButton"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.978" />
 
     <Button
         android:id="@+id/addFoodButton"
@@ -98,7 +100,7 @@
         android:id="@+id/addExerciseButton"
         android:layout_width="0dp"
         android:layout_height="35dp"
-        android:layout_marginTop="126dp"
+        android:layout_marginTop="116dp"
         android:layout_marginEnd="16dp"
         android:text="Add Exercise to Diary"
         android:textSize="8sp"
@@ -108,85 +110,119 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/foodDiaryRV"
-        android:layout_width="0dp"
-        android:layout_height="277dp"
-        android:layout_marginStart="25dp"
+        android:layout_width="176dp"
+        android:layout_height="274dp"
         android:layout_marginTop="193dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="192dp"
-        app:layout_constraintBottom_toTopOf="@+id/editDetailsButton"
-        app:layout_constraintEnd_toStartOf="@+id/exerciseDiaryRV"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foodCreateButton" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.042" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/exerciseDiaryRV"
-        android:layout_width="0dp"
-        android:layout_height="276dp"
-        android:layout_marginTop="193dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="193dp"
-        app:layout_constraintBottom_toTopOf="@+id/editDetailsButton"
+        android:layout_width="176dp"
+        android:layout_height="274dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/foodDiaryRV"
-        app:layout_constraintTop_toBottomOf="@+id/exCreateButton" />
+        app:layout_constraintHorizontal_bias="0.931"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.395" />
 
     <TextView
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="69dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="15dp"
         android:text="Foods:"
-        app:layout_constraintBottom_toTopOf="@+id/foodDiaryRV"
-        app:layout_constraintEnd_toEndOf="@+id/foodDiaryRV"
-        app:layout_constraintStart_toStartOf="@+id/addFoodButton" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.22000003" />
 
     <TextView
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="51dp"
-        android:layout_marginEnd="52dp"
-        android:layout_marginBottom="16dp"
         android:text="Exercises:"
-        app:layout_constraintBottom_toTopOf="@+id/exerciseDiaryRV"
-        app:layout_constraintEnd_toEndOf="@+id/exerciseDiaryRV"
-        app:layout_constraintStart_toStartOf="@+id/addExerciseButton" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.631"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.22000003" />
 
     <TextView
         android:id="@+id/textView21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="34dp"
-        android:layout_marginEnd="79dp"
-        android:layout_marginBottom="39dp"
         android:text="Calories Remaining:"
-        app:layout_constraintBottom_toTopOf="@+id/textView17"
-        app:layout_constraintEnd_toStartOf="@+id/calsText"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.202"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65" />
 
     <TextView
         android:id="@+id/calsText"
-        android:layout_width="0dp"
-        android:layout_height="31dp"
-        android:layout_marginEnd="71dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView21"
-        app:layout_constraintTop_toTopOf="@+id/textView21" />
+        app:layout_constraintHorizontal_bias="0.725"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.66" />
 
     <Button
         android:id="@+id/clearAllButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="13dp"
-        android:text="Finish Diary"
-        app:layout_constraintBottom_toTopOf="@+id/logoutButton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Clear Diary"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editDetailsButton"
-        app:layout_constraintTop_toBottomOf="@+id/bmiText" />
+        app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.978" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="1dp"
+        android:layout_height="70dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.68"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.99" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.89" />
+
+    <View
+        android:id="@+id/divider5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.605" />
 </androidx.constraintlayout.widget.ConstraintLayout>
