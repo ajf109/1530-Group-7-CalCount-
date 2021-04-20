@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class ExerciseCreationActivity extends AppCompatActivity {
 
@@ -35,18 +36,25 @@ public class ExerciseCreationActivity extends AppCompatActivity {
             public void onClick(View v){
                 String name = exNameText.getText().toString();
                 String caloriesStr = caloriesText.getText().toString();
+                if (!(name.equals("") || caloriesStr.equals("")))
+                {
+                    int calories = Integer.parseInt(caloriesStr);
 
-                //check if empty first
-                int calories = Integer.parseInt(caloriesStr);
+                    Exercise exercise = new Exercise(name, calories, id, false);
+                    userViewModel.insertExercise(exercise);
 
-                Exercise exercise = new Exercise(name, calories, id, false);
-                userViewModel.insertExercise(exercise);
+                    Intent intent = new Intent(v.getContext(), HomepageActivity.class);
+                    intent.putExtra("username", username);
+                    intent.putExtra("id", id);
 
-                Intent intent = new Intent(v.getContext(), HomepageActivity.class);
-                intent.putExtra("username", username);
-                intent.putExtra("id", id);
+                    startActivity(intent);
+                }
+                else
+                {
+                    Toast.makeText(ExerciseCreationActivity.this, "Please enter all fields", Toast.LENGTH_LONG).show();
+                }
 
-                startActivity(intent);
+
             }
         });
     }

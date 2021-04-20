@@ -57,6 +57,12 @@ public class FoodCreationActivity extends AppCompatActivity {
                         || proteins == -1 || fats == -1)) {
                     Food food = new Food(name, calories, carbs, proteins, fats, id, false);
                     userViewModel.insertFood(food);
+
+                    Intent intent = new Intent(v.getContext(), HomepageActivity.class);
+                    intent.putExtra("username", username);
+                    intent.putExtra("id", id);
+
+                    startActivity(intent);
                 }
                 else
                     Toast.makeText(FoodCreationActivity.this,
@@ -66,11 +72,7 @@ public class FoodCreationActivity extends AppCompatActivity {
                 //Food food = new Food(name, calories, id, false);
                 //userViewModel.insertFood(food);
 
-                Intent intent = new Intent(v.getContext(), HomepageActivity.class);
-                intent.putExtra("username", username);
-                intent.putExtra("id", id);
 
-                startActivity(intent);
             }
         });
     }

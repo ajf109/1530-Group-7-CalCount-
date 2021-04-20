@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         Button loginButton = findViewById(R.id.loginButton);
         EditText userText = findViewById(R.id.userText);
         EditText passText = findViewById(R.id.passText);
-        EditText emailText = findViewById(R.id.emailText);
+        //EditText emailText = findViewById(R.id.emailText);
 
 
         //attempt to log the user in when they hit the "login" button
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 //get info from text fields
                 String username = userText.getText().toString();
                 String password = passText.getText().toString();
-                String email = emailText.getText().toString();
+               // String email = emailText.getText().toString();
 
                 //attempt to find user with the given username
                 User user = userViewModel.get(username);
